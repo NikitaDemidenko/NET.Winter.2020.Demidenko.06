@@ -4,8 +4,11 @@ using System.Globalization;
 
 namespace Day06
 {
+    /// <summary>Provides TransformToWords methos.</summary>
     public class Transformer
     {
+        /// <summary>Gets the symbols dictionary.</summary>
+        /// <value>Symbols dictionary.</value>
         public Dictionary<char, string> SymbolsDictionary { get; } = new Dictionary<char, string>
         {
             ['0'] = "zero",
@@ -24,6 +27,9 @@ namespace Day06
             ['.'] = "point",
         };
 
+        /// <summary>Transforms number to its string representation.</summary>
+        /// <param name="number">Number.</param>
+        /// <returns>Returns a number as string.</returns>
         public string TransformToWords(double number)
         {
             if (double.IsNaN(number))
