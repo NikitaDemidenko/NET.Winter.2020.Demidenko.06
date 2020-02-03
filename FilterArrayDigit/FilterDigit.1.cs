@@ -8,9 +8,6 @@ namespace FilterArrayDigit
     /// </summary>
     public static partial class FilterDigit
     {
-        /// <summary>The maximum value of digit.</summary>
-        public const byte MaxValueOfDigit = 9;
-
         /// <summary>Filters an array by key.</summary>
         /// <param name="array">The array.</param>
         /// <returns>Returns new filtered array.</returns>

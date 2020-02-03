@@ -9,34 +9,47 @@ namespace FilterArrayDigit
     /// </summary>
     public static partial class FilterDigit
     {
+        /// <summary>The maximum value of digit.</summary>
+        public const byte MaxValueOfDigit = 9;
+
+        private static byte digit;
+
         /// <summary>Gets or sets the digit.</summary>
         /// <value>Digit.</value>
-        public static byte Digit { get; set; }
+        public static byte Digit
+        {
+            get => digit;
+
+            set
+            {
+                if (value > MaxValueOfDigit)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                digit = value;
+            }
+        }
 
         static partial void Filter(List<int> resultArray, int number)
         {
-            if (Digit > MaxValueOfDigit)
-            {
-                throw new ArgumentOutOfRangeException($"{nameof(Digit)} must be a digit.");
-            }
-
-            if (HasDigit(number, Digit))
+            if (HasDigit(number))
             {
                 resultArray.Add(number);
             }
         }
 
-        private static bool HasDigit(int number, byte digit)
+        private static bool HasDigit(int number)
         {
             uint absNumber = (uint)Math.Abs((long)number);
             uint remainder = absNumber;
-            while (absNumber > 0 && remainder != digit)
+            while (absNumber > 0 && remainder != Digit)
             {
                 remainder = absNumber % 10;
                 absNumber /= 10;
             }
 
-            return remainder == digit;
+            return remainder == Digit;
         }
     }
 }
