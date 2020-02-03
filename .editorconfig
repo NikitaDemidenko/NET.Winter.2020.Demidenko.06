@@ -1,3 +1,6 @@
 ﻿[*.cs]
 
 
+
+# CA1810: Initialize reference type static fields inline
+dotnet_diagnostic.CA1810.severity = none

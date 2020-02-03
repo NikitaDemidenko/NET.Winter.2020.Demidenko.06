@@ -1,12 +1,35 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
+using System.IO;
+using Day06;
+using System.Diagnostics;
 
 namespace Day06.Tests
 {
     public class PolynomialTests
-    { 
+    {
+        private static IConfigurationRoot ConfigurationRoot { get; } =
+            new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+        [SetUp]
+        public void Setup()
+        {
+            try
+            {
+                Polynomial.AppSetting.Epsilon = double.Parse(ConfigurationRoot["Epsilon"]);
+            }
+            catch (Exception)
+            {
+                Polynomial.AppSetting.Epsilon = 0.00000001;
+            } 
+        }
+
         public static IEnumerable<TestCaseData> TestCasesForAdd
         {
             get

@@ -23,8 +23,4 @@
     <AdditionalFiles Include="stylecop.json" Link="Properties\stylecop.json" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
 </Project>
