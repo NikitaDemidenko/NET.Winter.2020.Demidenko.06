@@ -42,9 +42,9 @@ namespace Day06
         {
             get
             {
-                if (index < 0)
+                if (index < 0 || index >= this.coefficients.Length)
                 {
-                    throw new ArgumentException($"{nameof(index)} must be greater or equals zero.");
+                    throw new ArgumentOutOfRangeException($"{nameof(index)} must be in the correct range");
                 }
 
                 return this.coefficients[index];
@@ -52,9 +52,9 @@ namespace Day06
 
             private set
             {
-                if (index < 0)
+                if (index < 0 || index >= this.coefficients.Length)
                 {
-                    throw new ArgumentException($"{nameof(index)} must be greater or equals zero.");
+                    throw new ArgumentOutOfRangeException($"{nameof(index)} must be in the correct range");
                 }
 
                 this.coefficients[index] = value;
