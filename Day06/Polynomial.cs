@@ -50,7 +50,7 @@ namespace Day06
                 return this.coefficients[index];
             }
 
-            set
+            private set
             {
                 if (index < 0)
                 {
@@ -81,12 +81,12 @@ namespace Day06
                 coefficients = new double[leftLength];
                 for (int i = 0; i < coefficients.Length; i++)
                 {
-                    coefficients[i] = left.coefficients[i];
+                    coefficients[i] = left[i];
                 }
 
                 for (int i = 0; i < rightLength; i++)
                 {
-                    coefficients[i] += right.coefficients[i];
+                    coefficients[i] += right[i];
                 }
             }
             else
@@ -94,12 +94,12 @@ namespace Day06
                 coefficients = new double[rightLength];
                 for (int i = 0; i < coefficients.Length; i++)
                 {
-                    coefficients[i] = right.coefficients[i];
+                    coefficients[i] = right[i];
                 }
 
                 for (int i = 0; i < leftLength; i++)
                 {
-                    coefficients[i] += left.coefficients[i];
+                    coefficients[i] += left[i];
                 }
             }
 
@@ -116,7 +116,7 @@ namespace Day06
             double[] coefficients = new double[left.coefficients.Length];
             for (int i = 0; i < coefficients.Length; i++)
             {
-                coefficients[i] = left.coefficients[i];
+                coefficients[i] = left[i];
             }
 
             coefficients[0] += right;
@@ -187,7 +187,7 @@ namespace Day06
             {
                 for (int j = 0; j < right.coefficients.Length; j++)
                 {
-                    coefficients[i + j] += left.coefficients[i] * right.coefficients[j];
+                    coefficients[i + j] += left[i] * right[j];
                 }
             }
 
@@ -209,7 +209,7 @@ namespace Day06
             double[] coefficients = new double[left.coefficients.Length];
             for (int i = 0; i < coefficients.Length; i++)
             {
-                coefficients[i] = left.coefficients[i] * right;
+                coefficients[i] = left[i] * right;
             }
 
             return new Polynomial(coefficients);
@@ -240,7 +240,7 @@ namespace Day06
             double[] coefficients = new double[left.coefficients.Length];
             for (int i = 0; i < coefficients.Length; i++)
             {
-                coefficients[i] = left.coefficients[i] / right;
+                coefficients[i] = left[i] / right;
             }
 
             return new Polynomial(coefficients);
@@ -265,7 +265,7 @@ namespace Day06
 
             for (int i = 0; i < left.coefficients.Length; i++)
             {
-                if (Math.Abs(left.coefficients[i] - right.coefficients[i]) > AppSetting.Epsilon)
+                if (Math.Abs(left[i] - right[i]) > AppSetting.Epsilon)
                 {
                     return false;
                 }
@@ -581,7 +581,7 @@ namespace Day06
 
             for (int i = 0; i < this.coefficients.Length; i++)
             {
-                if (Math.Abs(this.coefficients[i] - other.coefficients[i]) > AppSetting.Epsilon)
+                if (Math.Abs(this.coefficients[i] - other[i]) > AppSetting.Epsilon)
                 {
                     return false;
                 }
